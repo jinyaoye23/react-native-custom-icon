@@ -21,7 +21,37 @@
 #### iOS 更换图标配置[请参考](https://juejin.im/post/59395f9761ff4b006c6c204e)
 ##### 1.配置图标
 
+动态修改的icon不能放在 Assets.xcassets 里， 需要创建文件如AppIcons, 文件夹里存放需要动态更换的app图标
+
+![](https://upload-images.jianshu.io/upload_images/1928848-d47b7b71d7f512e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/518/format/webp)
+
+如果每一套图标有多个尺寸，需要统一名称前缀后面添加尺寸如前缀为 icon, 尺寸为20x20， 则名称为icon20x20@2x.png 和 icon20x20@3x.png，一种尺寸的图标包含2倍图和3倍图
+
+![](https://upload-images.jianshu.io/upload_images/1928848-ab1ad81c5c35f0a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/508/format/webp)
+
+
 ##### 2.info.plist配置
+
+在info.plist中右键 -> Add Row ：
+输入Icon... 会有提示，选择Icon files（iOS 5）
+
+![](https://upload-images.jianshu.io/upload_images/1928848-b37a04e25da7aada.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/636/format/webp)
+
+```
+这里的Icon files（iOS 5）是个字典，其中可包含的Key值有CFBundlePrimaryIcon         -> Primary Icon
+CFBundleAlternateIcons ->这个是我们添加更换图片的字段，为Dictionary, 如果没有这个字段可以添加
+UINewsstandIcon                 -> Newsstand Icon 暂时用不到可以删除
+
+```
+在 Icon files（iOS 5）内添加一个Key： CFBundleAlternateIcons ，类型为字典，在这个字典里配置我们所有需要动态修改的icon：键为icon的名称，值为一个字典（这个字典里包含两个键：CFBundleIconFiles，其值类型为Array，内容为icon的名称；UIPrerenderedIcon，其值类型为bool，内容为NO，也可以不加此key）
+
+![](https://upload-images.jianshu.io/upload_images/1928848-e4285bb504e5f038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+
+如果是添加了多个尺寸icon，也要在这里分别配置，以上面添加的sunshine图标为例：
+
+![](https://upload-images.jianshu.io/upload_images/1928848-4bf57f3332d765f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+
+使用的时候还是使用sunshine进行赋值即可！
 
 
 #### Android
@@ -44,6 +74,5 @@
 ```javascript
 import CustomIcon from 'react-native-custom-icon';
 
-// TODO: What to do with the module?
-CustomIcon;
+CustomIcon.changeIcon(iconName); // iconName 为图标名称，如上面sunshine为例， iconName就是sunshine
 ```

@@ -2,7 +2,7 @@
 
 ## Getting started
 
-`$ npm install react-native-custom-icon --save`
+`$ npm install https://github.com/jinyaoye23/react-native-custom-icon.git --save`
 
 ### Mostly automatic installation
 
@@ -17,6 +17,12 @@
 2. Go to `node_modules` ➜ `react-native-custom-icon` and add `CustomIcon.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libCustomIcon.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
+
+#### iOS 更换图标配置[请参考](https://juejin.im/post/59395f9761ff4b006c6c204e)
+##### 1.配置图标
+
+##### 2.info.plist配置
+
 
 #### Android
 

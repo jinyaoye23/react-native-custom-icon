@@ -68,11 +68,35 @@ UINewsstandIcon                 -> Newsstand Icon 暂时用不到可以删除
   	```
       compile project(':react-native-custom-icon')
   	```
-
-
+4.在AndroidManifest.xml里application节点下添加
+```
+<activity-alias
+        android:name=".NAME"  //注意此处的NAME与Usage的NAME相对应，
+        android:targetActivity=".MainActivity"
+        android:launchMode="standard"
+        android:label="@string/app_name"
+        android:enabled="false"
+        android:windowSoftInputMode="adjustResize"
+        android:icon="@drawable/icon002"
+        >
+        <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+</activity-alias>
+```
 ## Usage
+### ios
 ```javascript
 import CustomIcon from 'react-native-custom-icon';
 
 CustomIcon.changeIcon(iconName); // iconName 为图标名称，如上面sunshine为例， iconName就是sunshine
+```
+
+### android
+```javascript
+import CustomIcon from 'react-native-custom-icon';
+
+CustomIcon.registerIcon(iconNameList);//iconNameList为所有NAME的数组，如['001','002']，（不需要传默认图标）
+CustomIcon.changeIcon(NAME); // NAME 为图标名称，如上面sunshine为例， iconName就是sunshine
 ```

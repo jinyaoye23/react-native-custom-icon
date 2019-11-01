@@ -50,7 +50,7 @@ public class CustomIconModule extends ReactContextBaseJavaModule {
 
         if (componentNames.isEmpty()) {
 
-            ComponentName defaultComponent = new ComponentName(reactContext.getBaseContext(), pkName + ".MainActivity");
+            ComponentName defaultComponent = new ComponentName(reactContext.getBaseContext(), pkName + ".MainAliasActivity");
             componentNames.add(defaultComponent);
             for (int i = 0; i < iconNameList.size(); i++) {
                 Log.i("iconNameList = ", iconNameList.getString(i));
@@ -76,7 +76,7 @@ public class CustomIconModule extends ReactContextBaseJavaModule {
         packageManager = reactContext.getApplicationContext().getPackageManager();
         String ComponentName = pkName + ".icon" + id;
         if (id.isEmpty()) {
-            ComponentName = pkName + ".MainActivity";
+            ComponentName = pkName + ".MainAliasActivity";
         }
 
         //遍历componentNames，若为该id则启动组件，否则关闭组件
